@@ -1,0 +1,84 @@
+{
+  "linhas": 89566,
+  "pct_cat_corrompida_linhas": 6.0,
+  "pct_cat_corrompida_receita": 6.0,
+  "linhas_receita_nao_positiva": 4411,
+  "receita_negativa_total": -21051829.386944577,
+  "receita_negativa_pct": -4.3,
+  "receita_total": 490309826.7730554,
+  "receita_media_dia": 2026073.6643514684,
+  "bf_receita": 12707522.618894326,
+  "bf_multiplo": 7.5,
+  "preco_item_geral": 49.545257495583954,
+  "ticket_geral": 75.19057227160619,
+  "tx_desc_geral": 43.64754712810411,
+  "canal_receita_pct": {
+    "App": 76.2,
+    "Site": 23.8
+  },
+  "canal_ticket": {
+    "App": 73.4,
+    "Site": 81.5
+  },
+  "categorias": {
+    "FACIAL": {
+      "receita_mi": 8.6,
+      "preco_item": 19.4,
+      "tx_desc": 65.0
+    },
+    "CABELOS": {
+      "receita_mi": 16.4,
+      "preco_item": 25.1,
+      "tx_desc": 43.6
+    },
+    "MAQUIAGEM": {
+      "receita_mi": 17.3,
+      "preco_item": 29.4,
+      "tx_desc": 44.7
+    },
+    "GIFTS": {
+      "receita_mi": 49.5,
+      "preco_item": 104.1,
+      "tx_desc": 31.9
+    },
+    "PERF. DE ENTRADA E DEOS": {
+      "receita_mi": 51.2,
+      "preco_item": 42.3,
+      "tx_desc": 28.8
+    },
+    "CORPO E BANHO": {
+      "receita_mi": 71.7,
+      "preco_item": 33.9,
+      "tx_desc": 42.2
+    },
+    "PERFUMARIA FEMININA": {
+      "receita_mi": 119.7,
+      "preco_item": 56.0,
+      "tx_desc": 50.5
+    },
+    "PERFUMARIA MASCULINA": {
+      "receita_mi": 126.7,
+      "preco_item": 74.9,
+      "tx_desc": 43.1
+    }
+  },
+  "corr_receita_desconto": 0.55,
+  "corr_pedidos_desconto": 0.6,
+  "corr_ticket_desconto": -0.65,
+  "dow_indice": {
+    "Seg": 0.94,
+    "Ter": 1.02,
+    "Qua": 1.09,
+    "Qui": 1.09,
+    "Sex": 1.09,
+    "Sáb": 0.96,
+    "Dom": 0.81
+  },
+  "pico_horas": [
+    11,
+    13,
+    12
+  ],
+  "pct_madrugada_0_5": 4.9,
+  "pct_10_22": 78.0
+}
