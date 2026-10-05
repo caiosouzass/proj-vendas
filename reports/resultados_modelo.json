@@ -1,0 +1,170 @@
+{
+  "top_perm": {
+    "tx_desc": 0.1275,
+    "t": 0.0681,
+    "dow": 0.0407,
+    "media_14d": 0.0378,
+    "dia_mes": 0.0346,
+    "bf_janela": 0.0332
+  },
+  "top_coef": {
+    "tx_desc": 0.164,
+    "bf_janela": 0.141,
+    "pre_maes": 0.127,
+    "pre_natal": 0.089,
+    "media_14d": 0.079,
+    "fim_semana": -0.064
+  },
+  "resumo": {
+    "receita_aprovada|A. Sem plano promocional": {
+      "modelo": "Média Ridge+LGBM",
+      "WAPE walk-forward (%)": 24.2,
+      "WAPE holdout (%)": 30.1,
+      "WAPE holdout naive (%)": 35.1,
+      "WAPE walk-forward naive (%)": 34.2
+    },
+    "receita_aprovada|B. Com plano promocional": {
+      "modelo": "Ridge",
+      "WAPE walk-forward (%)": 23.4,
+      "WAPE holdout (%)": 31.2,
+      "WAPE holdout naive (%)": 35.1,
+      "WAPE walk-forward naive (%)": 34.2
+    },
+    "nr_pedidos|A. Sem plano promocional": {
+      "modelo": "Média Ridge+LGBM",
+      "WAPE walk-forward (%)": 27.3,
+      "WAPE holdout (%)": 27.5,
+      "WAPE holdout naive (%)": 29.7,
+      "WAPE walk-forward naive (%)": 38.3
+    },
+    "nr_pedidos|B. Com plano promocional": {
+      "modelo": "Média Ridge+LGBM",
+      "WAPE walk-forward (%)": 24.8,
+      "WAPE holdout (%)": 24.2,
+      "WAPE holdout naive (%)": 29.7,
+      "WAPE walk-forward naive (%)": 38.3
+    }
+  },
+  "tabelas": {
+    "receita_aprovada|A. Sem plano promocional": {
+      "Naive sazonal": {
+        "WAPE walk-forward (%)": 34.2,
+        "WAPE holdout (%)": 35.1,
+        "MAPE holdout (%)": 36.3,
+        "MAE holdout": 555337.5,
+        "Viés holdout (%)": -2.3
+      },
+      "Ridge": {
+        "WAPE walk-forward (%)": 25.1,
+        "WAPE holdout (%)": 30.0,
+        "MAPE holdout (%)": 32.4,
+        "MAE holdout": 474223.8,
+        "Viés holdout (%)": 6.5
+      },
+      "LightGBM": {
+        "WAPE walk-forward (%)": 26.5,
+        "WAPE holdout (%)": 30.7,
+        "MAPE holdout (%)": 33.4,
+        "MAE holdout": 485493.0,
+        "Viés holdout (%)": 7.6
+      },
+      "Média Ridge+LGBM": {
+        "WAPE walk-forward (%)": 24.2,
+        "WAPE holdout (%)": 30.1,
+        "MAPE holdout (%)": 32.7,
+        "MAE holdout": 477001.6,
+        "Viés holdout (%)": 7.1
+      }
+    },
+    "receita_aprovada|B. Com plano promocional": {
+      "Naive sazonal": {
+        "WAPE walk-forward (%)": 34.2,
+        "WAPE holdout (%)": 35.1,
+        "MAPE holdout (%)": 36.3,
+        "MAE holdout": 555337.5,
+        "Viés holdout (%)": -2.3
+      },
+      "Ridge": {
+        "WAPE walk-forward (%)": 23.4,
+        "WAPE holdout (%)": 31.2,
+        "MAPE holdout (%)": 30.8,
+        "MAE holdout": 493155.9,
+        "Viés holdout (%)": 3.0
+      },
+      "LightGBM": {
+        "WAPE walk-forward (%)": 27.4,
+        "WAPE holdout (%)": 27.0,
+        "MAPE holdout (%)": 26.2,
+        "MAE holdout": 427024.5,
+        "Viés holdout (%)": -4.0
+      },
+      "Média Ridge+LGBM": {
+        "WAPE walk-forward (%)": 24.7,
+        "WAPE holdout (%)": 28.4,
+        "MAPE holdout (%)": 27.9,
+        "MAE holdout": 450109.7,
+        "Viés holdout (%)": -0.5
+      }
+    },
+    "nr_pedidos|A. Sem plano promocional": {
+      "Naive sazonal": {
+        "WAPE walk-forward (%)": 38.3,
+        "WAPE holdout (%)": 29.7,
+        "MAPE holdout (%)": 31.4,
+        "MAE holdout": 5060.2,
+        "Viés holdout (%)": -9.0
+      },
+      "Ridge": {
+        "WAPE walk-forward (%)": 28.6,
+        "WAPE holdout (%)": 27.7,
+        "MAPE holdout (%)": 33.3,
+        "MAE holdout": 4721.1,
+        "Viés holdout (%)": 10.4
+      },
+      "LightGBM": {
+        "WAPE walk-forward (%)": 28.0,
+        "WAPE holdout (%)": 27.8,
+        "MAPE holdout (%)": 32.7,
+        "MAE holdout": 4745.2,
+        "Viés holdout (%)": 10.8
+      },
+      "Média Ridge+LGBM": {
+        "WAPE walk-forward (%)": 27.3,
+        "WAPE holdout (%)": 27.5,
+        "MAPE holdout (%)": 32.8,
+        "MAE holdout": 4693.1,
+        "Viés holdout (%)": 10.6
+      }
+    },
+    "nr_pedidos|B. Com plano promocional": {
+      "Naive sazonal": {
+        "WAPE walk-forward (%)": 38.3,
+        "WAPE holdout (%)": 29.7,
+        "MAPE holdout (%)": 31.4,
+        "MAE holdout": 5060.2,
+        "Viés holdout (%)": -9.0
+      },
+      "Ridge": {
+        "WAPE walk-forward (%)": 25.0,
+        "WAPE holdout (%)": 24.9,
+        "MAPE holdout (%)": 27.0,
+        "MAE holdout": 4242.3,
+        "Viés holdout (%)": 8.4
+      },
+      "LightGBM": {
+        "WAPE walk-forward (%)": 26.2,
+        "WAPE holdout (%)": 26.2,
+        "MAPE holdout (%)": 27.3,
+        "MAE holdout": 4468.9,
+        "Viés holdout (%)": 0.0
+      },
+      "Média Ridge+LGBM": {
+        "WAPE walk-forward (%)": 24.8,
+        "WAPE holdout (%)": 24.2,
+        "MAPE holdout (%)": 26.2,
+        "MAE holdout": 4137.7,
+        "Viés holdout (%)": 4.2
+      }
+    }
+  }
+}
