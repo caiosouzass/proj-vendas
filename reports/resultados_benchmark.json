@@ -1,0 +1,188 @@
+{
+  "tabelas": {
+    "receita_aprovada": {
+      "ETS (auto)": {
+        "WAPE walk-forward (%)": 34.2,
+        "WAPE holdout (%)": 35.1,
+        "MAPE holdout (%)": 36.3,
+        "MAE holdout": 555403.6,
+        "Viés holdout (%)": -2.3
+      },
+      "ETS (ajustado)": {
+        "WAPE walk-forward (%)": 27.8,
+        "WAPE holdout (%)": 36.1,
+        "MAPE holdout (%)": 38.9,
+        "MAE holdout": 570657.2,
+        "Viés holdout (%)": 6.0
+      },
+      "SARIMAX": {
+        "WAPE walk-forward (%)": 25.6,
+        "WAPE holdout (%)": 30.2,
+        "MAPE holdout (%)": 32.6,
+        "MAE holdout": 478448.7,
+        "Viés holdout (%)": 4.3
+      },
+      "SARIMAX (eventos)": {
+        "WAPE walk-forward (%)": 25.2,
+        "WAPE holdout (%)": 29.6,
+        "MAPE holdout (%)": 31.9,
+        "MAE holdout": 469126.6,
+        "Viés holdout (%)": 3.1
+      },
+      "Prophet": {
+        "WAPE walk-forward (%)": 33.2,
+        "WAPE holdout (%)": 32.2,
+        "MAPE holdout (%)": 36.0,
+        "MAE holdout": 510264.8,
+        "Viés holdout (%)": 13.3
+      },
+      "Ridge": {
+        "WAPE walk-forward (%)": 25.1,
+        "WAPE holdout (%)": 30.0,
+        "MAPE holdout (%)": 32.4,
+        "MAE holdout": 474223.8,
+        "Viés holdout (%)": 6.5
+      },
+      "LightGBM": {
+        "WAPE walk-forward (%)": 26.5,
+        "WAPE holdout (%)": 30.7,
+        "MAPE holdout (%)": 33.4,
+        "MAE holdout": 485493.0,
+        "Viés holdout (%)": 7.6
+      },
+      "Média Ridge+LGBM": {
+        "WAPE walk-forward (%)": 24.2,
+        "WAPE holdout (%)": 30.1,
+        "MAPE holdout (%)": 32.7,
+        "MAE holdout": 477001.6,
+        "Viés holdout (%)": 7.1
+      },
+      "Naive sazonal": {
+        "WAPE walk-forward (%)": 34.2,
+        "WAPE holdout (%)": 35.1,
+        "MAPE holdout (%)": 36.3,
+        "MAE holdout": 555337.5,
+        "Viés holdout (%)": -2.3
+      }
+    },
+    "nr_pedidos": {
+      "ETS (auto)": {
+        "WAPE walk-forward (%)": 38.3,
+        "WAPE holdout (%)": 29.7,
+        "MAPE holdout (%)": 31.4,
+        "MAE holdout": 5060.2,
+        "Viés holdout (%)": -9.0
+      },
+      "ETS (ajustado)": {
+        "WAPE walk-forward (%)": 29.5,
+        "WAPE holdout (%)": 37.7,
+        "MAPE holdout (%)": 42.5,
+        "MAE holdout": 6435.4,
+        "Viés holdout (%)": 7.5
+      },
+      "SARIMAX": {
+        "WAPE walk-forward (%)": 28.5,
+        "WAPE holdout (%)": 26.2,
+        "MAPE holdout (%)": 30.7,
+        "MAE holdout": 4467.6,
+        "Viés holdout (%)": 8.3
+      },
+      "SARIMAX (eventos)": {
+        "WAPE walk-forward (%)": 27.8,
+        "WAPE holdout (%)": 25.2,
+        "MAPE holdout (%)": 29.8,
+        "MAE holdout": 4306.3,
+        "Viés holdout (%)": 6.5
+      },
+      "Prophet": {
+        "WAPE walk-forward (%)": 35.2,
+        "WAPE holdout (%)": 28.8,
+        "MAPE holdout (%)": 33.6,
+        "MAE holdout": 4922.2,
+        "Viés holdout (%)": 11.0
+      },
+      "Ridge": {
+        "WAPE walk-forward (%)": 28.6,
+        "WAPE holdout (%)": 27.7,
+        "MAPE holdout (%)": 33.3,
+        "MAE holdout": 4721.1,
+        "Viés holdout (%)": 10.4
+      },
+      "LightGBM": {
+        "WAPE walk-forward (%)": 28.0,
+        "WAPE holdout (%)": 27.8,
+        "MAPE holdout (%)": 32.7,
+        "MAE holdout": 4745.2,
+        "Viés holdout (%)": 10.8
+      },
+      "Média Ridge+LGBM": {
+        "WAPE walk-forward (%)": 27.3,
+        "WAPE holdout (%)": 27.5,
+        "MAPE holdout (%)": 32.8,
+        "MAE holdout": 4693.1,
+        "Viés holdout (%)": 10.6
+      },
+      "Naive sazonal": {
+        "WAPE walk-forward (%)": 38.3,
+        "WAPE holdout (%)": 29.7,
+        "MAPE holdout (%)": 31.4,
+        "MAE holdout": 5060.2,
+        "Viés holdout (%)": -9.0
+      }
+    }
+  },
+  "ordem_sarimax": {
+    "receita_aprovada": {
+      "ordem_sarimax": "((1, 0, 0), (1, 0, 0, 7))",
+      "n": 191,
+      "janelas": [
+        [
+          135,
+          149
+        ],
+        [
+          149,
+          163
+        ],
+        [
+          163,
+          177
+        ],
+        [
+          177,
+          191
+        ],
+        [
+          191,
+          221
+        ]
+      ]
+    },
+    "nr_pedidos": {
+      "ordem_sarimax": "((1, 0, 0), (1, 0, 1, 7))",
+      "n": 191,
+      "janelas": [
+        [
+          135,
+          149
+        ],
+        [
+          149,
+          163
+        ],
+        [
+          163,
+          177
+        ],
+        [
+          177,
+          191
+        ],
+        [
+          191,
+          221
+        ]
+      ]
+    }
+  }
+}

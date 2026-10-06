@@ -51,21 +51,93 @@
       "WAPE holdout (%)": 29.3
     }
   },
-  "top_perm": {
-    "tx_desc": 0.1275,
-    "t": 0.0681,
-    "dow": 0.0407,
-    "media_14d": 0.0378,
-    "dia_mes": 0.0346,
-    "bf_janela": 0.0332
+  "importancia_perm": {
+    "A": {
+      "mesmo_dow_media": 0.0048,
+      "pre_maes": 0.0046,
+      "t": 0.0046,
+      "dow": 0.0039,
+      "media_7d": 0.0011,
+      "pos_pagamento": 0.0003,
+      "cyber_monday": 0.0,
+      "natal_ano_novo": 0.0
+    },
+    "B": {
+      "dia_mes": 0.0079,
+      "pre_maes": 0.0075,
+      "lag_14": 0.0024,
+      "dow": 0.0022,
+      "tx_desc": 0.0002,
+      "carnaval": 0.0,
+      "pre_namorados": 0.0,
+      "cyber_monday": 0.0
+    }
   },
-  "top_coef": {
-    "tx_desc": 0.164,
-    "bf_janela": 0.141,
-    "pre_maes": 0.127,
-    "pre_natal": 0.089,
-    "media_14d": 0.079,
-    "fim_semana": -0.064
+  "importancia_coef": {
+    "A": {
+      "bf_janela": 0.18,
+      "pre_maes": 0.107,
+      "media_14d": 0.083,
+      "carnaval": -0.075,
+      "feriado": -0.074,
+      "fim_semana": -0.068,
+      "bf_dia": 0.067,
+      "mesmo_dow_media": -0.062
+    },
+    "B": {
+      "tx_desc": 0.164,
+      "bf_janela": 0.141,
+      "pre_maes": 0.127,
+      "pre_natal": 0.089,
+      "media_14d": 0.079,
+      "fim_semana": -0.064,
+      "mesmo_dow_media": -0.06,
+      "bf_dia": 0.06
+    }
+  },
+  "importancia_perm_todas_A": {
+    "mesmo_dow_media": 0.0048,
+    "pre_maes": 0.0046,
+    "t": 0.0046,
+    "dow": 0.0039,
+    "media_7d": 0.0011,
+    "pos_pagamento": 0.0003,
+    "cyber_monday": 0.0,
+    "natal_ano_novo": 0.0,
+    "carnaval": 0.0,
+    "pre_natal": 0.0,
+    "bf_janela": 0.0,
+    "bf_dia": 0.0,
+    "pre_namorados": 0.0,
+    "fim_mes": -0.0002,
+    "fim_semana": -0.0006,
+    "feriado": -0.0055,
+    "lag_7": -0.0067,
+    "lag_14": -0.01,
+    "dia_mes": -0.0108,
+    "media_14d": -0.0114
+  },
+  "coef_todas_A": {
+    "bf_janela": 0.18,
+    "pre_maes": 0.107,
+    "media_14d": 0.083,
+    "carnaval": -0.075,
+    "feriado": -0.074,
+    "fim_semana": -0.068,
+    "bf_dia": 0.067,
+    "mesmo_dow_media": -0.062,
+    "lag_14": 0.062,
+    "pre_natal": 0.044,
+    "cyber_monday": 0.04,
+    "dia_mes": -0.037,
+    "t": 0.031,
+    "media_7d": 0.03,
+    "pos_pagamento": 0.028,
+    "lag_7": 0.02,
+    "dow": 0.008,
+    "fim_mes": -0.006,
+    "natal_ano_novo": 0.001,
+    "pre_namorados": 0.0
   },
   "resumo": {
     "receita_aprovada|A. Sem plano promocional": {
