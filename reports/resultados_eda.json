@@ -5,6 +5,12 @@
   "linhas_receita_nao_positiva": 4411,
   "receita_negativa_total": -21051829.386944577,
   "receita_negativa_pct": -4.3,
+  "neg_mediana_item": [
+    49.84,
+    49.66
+  ],
+  "receita_abs_total": 532413485.54694456,
+  "receita_abs_vs_liquida_pct": 8.6,
   "receita_total": 490309826.7730554,
   "receita_media_dia": 2026073.6643514684,
   "bf_receita": 12707522.618894326,
@@ -80,5 +86,21 @@
     12
   ],
   "pct_madrugada_0_5": 4.9,
-  "pct_10_22": 78.0
+  "pct_10_22": 78.0,
+  "junho13_faixas": {
+    "0–9h": 0.74,
+    "10–14h": 0.76,
+    "15–18h": 0.49,
+    "19–23h (jogo às 19h)": 0.45
+  },
+  "junho13_categorias": {
+    "GIFTS": 0.25,
+    "PERFUMARIA FEMININA": 0.38,
+    "PERFUMARIA MASCULINA": 0.39,
+    "PERF. DE ENTRADA E DEOS": 0.42,
+    "MAQUIAGEM": 0.5,
+    "FACIAL": 0.51,
+    "CORPO E BANHO": 0.51,
+    "CABELOS": 0.58
+  }
 }

@@ -34,7 +34,7 @@ Análise exploratória, modelo de previsão de vendas diárias e proposta de arq
 ## Principais conclusões
 
 - **Qualidade dos dados:** 6% das linhas têm categoria corrompida (mantidas, rotuladas como `NÃO IDENTIFICADA`);
-  ~5% das linhas têm receita ≤ 0 (−4,3% da receita líquida), compatível com estornos/cancelamentos.
+  ~5% das linhas têm receita ≤ 0 (−4,3% da receita líquida). Os testes indicam que não são estornos (mesma distribuição de valor por item das vendas, sem relação com vendas anteriores); o padrão sugere inversão de sinal aleatória, a confirmar com o dono do dado. Mantidas como vieram, com análise de sensibilidade (|receita|: +8,6% no nível, erro do modelo praticamente igual).
 - **Comportamento de vendas:** a intensidade promocional é o principal motor da receita diária. A Black Friday (28/11/2025)
   vale ~7,5× a mediana diária. Quarta a sexta são os dias mais fortes e domingo o mais fraco; a receita se concentra entre 10h e 22h.
 - **Modelo:** previsão com 7 dias de antecedência usando Ridge, LightGBM e a média dos dois, validada por *walk-forward* e *holdout* (junho/2026).
@@ -46,4 +46,4 @@ Análise exploratória, modelo de previsão de vendas diárias e proposta de arq
 ## Premissas
 
 - `vlr_venda_desconto` é interpretado como desconto concedido (venda bruta ≈ receita + desconto).
-- Linhas com receita ≤ 0 foram mantidas por comporem a receita líquida.
+- Linhas com receita ≤ 0 foram mantidas como vieram (base líquida); a leitura alternativa (|receita|) é avaliada nos notebooks.

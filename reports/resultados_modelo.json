@@ -41,6 +41,16 @@
       "ho": 22.4
     }
   },
+  "sens_tratamento_neg": {
+    "Receita líquida (como veio)": {
+      "WAPE walk-forward (%)": 24.2,
+      "WAPE holdout (%)": 30.1
+    },
+    "Soma de |receita|": {
+      "WAPE walk-forward (%)": 23.3,
+      "WAPE holdout (%)": 29.3
+    }
+  },
   "top_perm": {
     "tx_desc": 0.1275,
     "t": 0.0681,
