@@ -42,13 +42,35 @@
     }
   },
   "sens_tratamento_neg": {
-    "Receita líquida (como veio)": {
+    "Receita aprovada|Manter (líquida)": {
       "WAPE walk-forward (%)": 24.2,
-      "WAPE holdout (%)": 30.1
+      "WAPE holdout (%)": 30.1,
+      "nível médio diário vs. manter (%)": 0.0
     },
-    "Soma de |receita|": {
+    "Receita aprovada|Descartar linhas ≤ 0": {
+      "WAPE walk-forward (%)": 23.6,
+      "WAPE holdout (%)": 29.7,
+      "nível médio diário vs. manter (%)": 4.3
+    },
+    "Receita aprovada|Somar |receita|": {
       "WAPE walk-forward (%)": 23.3,
-      "WAPE holdout (%)": 29.3
+      "WAPE holdout (%)": 29.3,
+      "nível médio diário vs. manter (%)": 8.6
+    },
+    "Nº de pedidos|Manter (líquida)": {
+      "WAPE walk-forward (%)": 27.3,
+      "WAPE holdout (%)": 27.5,
+      "nível médio diário vs. manter (%)": 0.0
+    },
+    "Nº de pedidos|Descartar linhas ≤ 0": {
+      "WAPE walk-forward (%)": 27.3,
+      "WAPE holdout (%)": 27.2,
+      "nível médio diário vs. manter (%)": -4.1
+    },
+    "Nº de pedidos|Somar |receita|": {
+      "WAPE walk-forward (%)": 27.3,
+      "WAPE holdout (%)": 27.5,
+      "nível médio diário vs. manter (%)": 0.0
     }
   },
   "importancia_perm": {
