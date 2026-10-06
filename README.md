@@ -39,6 +39,7 @@ Análise exploratória, modelo de previsão de vendas diárias e proposta de arq
   vale ~7,5× a mediana diária. Quarta a sexta são os dias mais fortes e domingo o mais fraco; a receita se concentra entre 10h e 22h.
 - **Modelo:** previsão com 7 dias de antecedência usando Ridge, LightGBM e a média dos dois, validada por *walk-forward* e *holdout* (junho/2026).
   Os modelos reduzem o erro frente ao baseline sazonal, mas o ganho é moderado porque as campanhas não estão no calendário.
+  O cenário com a taxa de desconto do dia é um teto otimista (circular); um teste de sensibilidade mostra que, com a taxa defasada, não há ganho sobre o cenário só com calendário e histórico.
   Detalhes e limites estão no notebook 02.
 - **Seção 2:** proposta de pipeline com embeddings + score supervisionado, MVP em 6–8 semanas e critério go/no-go.
 

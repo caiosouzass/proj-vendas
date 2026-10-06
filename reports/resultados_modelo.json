@@ -1,4 +1,46 @@
 {
+  "sensibilidade": {
+    "receita_aprovada|A. Sem informação de desconto": {
+      "wf": 24.2,
+      "ho": 30.1
+    },
+    "receita_aprovada|B1. Taxa do dia (circular, otimista)": {
+      "wf": 24.7,
+      "ho": 28.4
+    },
+    "receita_aprovada|B2. Taxa defasada 7d": {
+      "wf": 24.9,
+      "ho": 29.2
+    },
+    "receita_aprovada|B3. Média 7d defasada": {
+      "wf": 24.8,
+      "ho": 26.9
+    },
+    "receita_aprovada|B4. Taxa do dia com ruído de ~20%": {
+      "wf": 24.7,
+      "ho": 27.1
+    },
+    "nr_pedidos|A. Sem informação de desconto": {
+      "wf": 27.3,
+      "ho": 27.5
+    },
+    "nr_pedidos|B1. Taxa do dia (circular, otimista)": {
+      "wf": 24.8,
+      "ho": 24.2
+    },
+    "nr_pedidos|B2. Taxa defasada 7d": {
+      "wf": 27.4,
+      "ho": 28.6
+    },
+    "nr_pedidos|B3. Média 7d defasada": {
+      "wf": 28.3,
+      "ho": 26.0
+    },
+    "nr_pedidos|B4. Taxa do dia com ruído de ~20%": {
+      "wf": 26.7,
+      "ho": 22.4
+    }
+  },
   "top_perm": {
     "tx_desc": 0.1275,
     "t": 0.0681,
@@ -23,7 +65,7 @@
       "WAPE holdout naive (%)": 35.1,
       "WAPE walk-forward naive (%)": 34.2
     },
-    "receita_aprovada|B. Com plano promocional": {
+    "receita_aprovada|B. Com plano promocional (teto)": {
       "modelo": "Ridge",
       "WAPE walk-forward (%)": 23.4,
       "WAPE holdout (%)": 31.2,
@@ -37,7 +79,7 @@
       "WAPE holdout naive (%)": 29.7,
       "WAPE walk-forward naive (%)": 38.3
     },
-    "nr_pedidos|B. Com plano promocional": {
+    "nr_pedidos|B. Com plano promocional (teto)": {
       "modelo": "Média Ridge+LGBM",
       "WAPE walk-forward (%)": 24.8,
       "WAPE holdout (%)": 24.2,
@@ -76,7 +118,7 @@
         "Viés holdout (%)": 7.1
       }
     },
-    "receita_aprovada|B. Com plano promocional": {
+    "receita_aprovada|B. Com plano promocional (teto)": {
       "Naive sazonal": {
         "WAPE walk-forward (%)": 34.2,
         "WAPE holdout (%)": 35.1,
@@ -136,7 +178,7 @@
         "Viés holdout (%)": 10.6
       }
     },
-    "nr_pedidos|B. Com plano promocional": {
+    "nr_pedidos|B. Com plano promocional (teto)": {
       "Naive sazonal": {
         "WAPE walk-forward (%)": 38.3,
         "WAPE holdout (%)": 29.7,
