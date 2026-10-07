@@ -23,12 +23,16 @@ H = 7
 def calendario(idx: pd.DatetimeIndex) -> pd.DataFrame:
     """Features que dependem apenas da data (conhecidas no futuro)."""
     f = pd.DataFrame(index=idx)
-    f["dow"] = idx.dayofweek
+    # dia da semana em variáveis binárias (segunda é a referência): um modelo linear não pode tratar 0..6 como número
+    for k, nome in enumerate(["seg", "ter", "qua", "qui", "sex", "sab", "dom"]):
+        if k > 0:
+            f[f"dow_{nome}"] = (idx.dayofweek == k).astype(int)
     f["fim_semana"] = (idx.dayofweek >= 5).astype(int)
     f["dia_mes"] = idx.day
     f["fim_mes"] = (idx.day >= 28).astype(int)
-    f["pos_pagamento"] = idx.day.isin([5, 6, 7, 20, 21]).astype(int)
+    f["pos_pagamento"] = idx.day.isin([5, 6, 7]).astype(int)  # dias 20-21 não tiveram suporte nos dados
     f["feriado"] = idx.isin(FERIADOS).astype(int)
+    f["beauty_week"] = (idx.month == 11).astype(int)  # campanha que dura o mês de novembro inteiro (pico na Black Friday)
     f["bf_dia"] = (idx == BLACK_FRIDAY).astype(int)
     f["bf_janela"] = ((idx >= BLACK_FRIDAY - pd.Timedelta(days=4)) & (idx <= BLACK_FRIDAY + pd.Timedelta(days=2))).astype(int)
     f["cyber_monday"] = (idx == CYBER_MONDAY).astype(int)
@@ -42,13 +46,17 @@ def calendario(idx: pd.DatetimeIndex) -> pd.DataFrame:
 
 
 def com_defasagens(y: pd.Series, h: int = H) -> pd.DataFrame:
-    """Lags e médias móveis do alvo, deslocados em ``h`` dias (sem vazamento)."""
+    """Lags e médias móveis do alvo, deslocados em ``h`` dias (sem vazamento).
+
+    No início da série, onde falta histórico, médias usam os valores disponíveis (mín. 3) e ``lag_14`` cai para ``lag_7``;
+    assim o treino aproveita as primeiras semanas de novembro, em vez de perder 21 dias da campanha.
+    """
     f = pd.DataFrame(index=y.index)
     f[f"lag_{h}"] = y.shift(h)
-    f[f"lag_{h + 7}"] = y.shift(h + 7)
-    f["media_7d"] = y.shift(h).rolling(7).mean()
-    f["media_14d"] = y.shift(h).rolling(14).mean()
-    f["mesmo_dow_media"] = (y.shift(h) + y.shift(h + 7) + y.shift(h + 14)) / 3
+    f[f"lag_{h + 7}"] = y.shift(h + 7).fillna(y.shift(h))
+    f["media_7d"] = y.shift(h).rolling(7, min_periods=3).mean()
+    f["media_14d"] = y.shift(h).rolling(14, min_periods=3).mean()
+    f["mesmo_dow_media"] = pd.concat([y.shift(h), y.shift(h + 7), y.shift(h + 14)], axis=1).mean(axis=1)
     return f
 
 

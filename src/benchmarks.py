@@ -14,9 +14,16 @@ from .features import BLACK_FRIDAY, CYBER_MONDAY, DIA_DAS_MAES, DIA_NAMORADOS, F
 from .modeling import DIAS_HOLDOUT, metricas, modelos, prever_modelo
 from .features import montar
 
-EVENTOS = ["feriado", "bf_dia", "bf_janela", "cyber_monday", "pre_natal", "natal_ano_novo",
+
+def modelo_xgboost():
+    from xgboost import XGBRegressor
+    return XGBRegressor(n_estimators=300, learning_rate=0.03, max_depth=3, min_child_weight=3, subsample=0.8,
+                        colsample_bytree=0.8, reg_lambda=1.0, random_state=42, n_jobs=1, verbosity=0)
+
+EVENTOS = ["beauty_week", "feriado", "bf_dia", "bf_janela", "cyber_monday", "pre_natal", "natal_ano_novo",
            "pre_maes", "pre_namorados", "carnaval"]
 N_FOLDS, PASSO = 4, 14
+MIN_DIAS_EVENTO = 5  # mínimo de dias ativos no treino para um regressor de evento entrar no SARIMAX
 
 
 def _silenciar():
@@ -28,7 +35,7 @@ def _silenciar():
 def feriados_prophet() -> pd.DataFrame:
     linhas = [("black_friday", BLACK_FRIDAY, -4, 2), ("cyber_monday", CYBER_MONDAY, 0, 0),
               ("natal_ano_novo", NATAL, -7, 8), ("dia_das_maes", DIA_DAS_MAES, -7, 0),
-              ("dia_dos_namorados", DIA_NAMORADOS, -7, 0), ("carnaval", pd.Timestamp("2026-02-16"), -3, 2)]
+              ("dia_dos_namorados", DIA_NAMORADOS, -7, 0), ("carnaval", pd.Timestamp("2026-02-16"), -3, 2), ("beauty_week", pd.Timestamp("2025-11-01"), 0, 29)]
     linhas += [("feriado", d, 0, 0) for d in FERIADOS]
     return pd.DataFrame(linhas, columns=["holiday", "ds", "lower_window", "upper_window"])
 
@@ -69,12 +76,24 @@ def _prophet(ylog, origem, h, feriados):
     return float(m.predict(pd.DataFrame({"ds": [ylog.index[origem + h]]})).yhat.iloc[0])
 
 
-def _sarimax_fit(ylog, ate, exog, order, sorder):
+def _sarimax_modelo(ylog, exog, order, sorder, difusa):
     from statsmodels.tsa.statespace.sarimax import SARIMAX
+    m = SARIMAX(ylog, exog=exog, order=order, seasonal_order=sorder, trend="c")
+    if difusa: m.initialize_approximate_diffuse()
+    return m
+
+
+def _sarimax_fit(ylog, ate, exog, order, sorder):
+    """Ajusta o SARIMAX; se a inicialização estacionária falhar numericamente, usa inicialização difusa.
+
+    Retorna o resultado e se a inicialização difusa foi usada (a previsão deve repetir a mesma escolha).
+    """
     _silenciar()
     ex = exog.iloc[:ate] if exog is not None else None
-    r = SARIMAX(ylog.iloc[:ate], exog=ex, order=order, seasonal_order=sorder, trend="c").fit(disp=False, maxiter=200)
-    return r
+    try:
+        return _sarimax_modelo(ylog.iloc[:ate], ex, order, sorder, False).fit(disp=False, maxiter=200), False
+    except np.linalg.LinAlgError:
+        return _sarimax_modelo(ylog.iloc[:ate], ex, order, sorder, True).fit(disp=False, maxiter=200), True
 
 
 def escolher_ordem(ylog, ate, exog):
@@ -82,7 +101,7 @@ def escolher_ordem(ylog, ate, exog):
     melhor = (np.inf, None)
     for p, q, P, Q in itertools.product([0, 1, 2], [0, 1, 2], [0, 1], [0, 1]):
         try:
-            r = _sarimax_fit(ylog, ate, exog, (p, 0, q), (P, 0, Q, 7))
+            r, _ = _sarimax_fit(ylog, ate, exog, (p, 0, q), (P, 0, Q, 7))
             if r.aic < melhor[0]: melhor = (r.aic, ((p, 0, q), (P, 0, Q, 7)))
         except Exception:
             continue
@@ -90,10 +109,10 @@ def escolher_ordem(ylog, ate, exog):
 
 
 def _sarimax(ylog, exog, origem, h, params, order, sorder):
-    from statsmodels.tsa.statespace.sarimax import SARIMAX
     _silenciar()
+    valores, difusa = params
     ex = exog.iloc[: origem + 1] if exog is not None else None
-    r = SARIMAX(ylog.iloc[: origem + 1], exog=ex, order=order, seasonal_order=sorder, trend="c").smooth(params)
+    r = _sarimax_modelo(ylog.iloc[: origem + 1], ex, order, sorder, difusa).smooth(valores)
     fut = exog.iloc[origem + 1: origem + 1 + h] if exog is not None else None
     return float(r.forecast(h, exog=fut).iloc[-1])
 
@@ -109,14 +128,15 @@ def rodar(y: pd.Series, n_jobs: int = 10, h: int = H):
     pos = lambda data: y.index.get_loc(data)
     # ordem do SARIMAX escolhida só com dados anteriores à 1ª janela de teste
     ate0 = pos(yy.index[janelas[0][0]])
-    ev0 = ev.loc[:, ev.iloc[:ate0].std() > 0]
+    ev0 = ev.loc[:, ev.iloc[:ate0].sum() >= MIN_DIAS_EVENTO]
     ordem = escolher_ordem(ylog, ate0, ev0)
     tarefas, params, colunas, suav = [], {}, {}, {}
     for w, (a, b) in enumerate(janelas):
         ate = pos(yy.index[a])
-        cols = ev.columns[ev.iloc[:ate].std() > 0]; colunas[w] = cols
-        params[(w, "eventos")] = _sarimax_fit(ylog, ate, ev[cols], *ordem).params.values
-        params[(w, "puro")] = _sarimax_fit(ylog, ate, None, *ordem).params.values
+        cols = ev.columns[ev.iloc[:ate].sum() >= MIN_DIAS_EVENTO]; colunas[w] = cols  # evento com pouca evidência no treino não entra
+        for nome, ex in [("eventos", ev[cols]), ("puro", None)]:
+            r, difusa = _sarimax_fit(ylog, ate, ex, *ordem)
+            params[(w, nome)] = (r.params.values, difusa)
         suav[w] = escolher_suavizacao(ylog, ate, h)
         for k in range(a, b):
             tarefas.append((w, k, pos(yy.index[k])))
@@ -136,6 +156,10 @@ def rodar(y: pd.Series, n_jobs: int = 10, h: int = H):
         for nm, mk in modelos().items():
             ml[nm] += list(prever_modelo(mk, X.iloc[:a], yy.iloc[:a], X.iloc[a:b])[0])
     preds["Ridge"], preds["LightGBM"] = ml["Ridge"], ml["LightGBM"]
+    xgb = []
+    for a, b in janelas:
+        xgb += list(prever_modelo(modelo_xgboost, X.iloc[:a], yy.iloc[:a], X.iloc[a:b])[0])
+    preds["XGBoost"] = xgb
     preds["Média Ridge+LGBM"] = (preds.Ridge + preds.LightGBM) / 2
     preds["Naive sazonal"] = y.shift(7 * int(np.ceil(h / 7))).loc[preds.index].values
     return preds, yy, janelas, n, ordem

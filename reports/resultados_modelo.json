@@ -1,192 +1,331 @@
 {
-  "sensibilidade": {
-    "receita_aprovada|A. Sem informação de desconto": {
-      "wf": 24.2,
-      "ho": 30.1
+  "corr_kpis": {
+    "receita_aprovada": {
+      "receita_aprovada": 1.0,
+      "nr_pedidos": 0.97,
+      "qt_material": 0.96,
+      "vlr_venda_desconto": 0.95,
+      "ticket": -0.45,
+      "itens_por_pedido": 0.3,
+      "tx_desc": 0.55
     },
-    "receita_aprovada|B1. Taxa do dia (circular, otimista)": {
-      "wf": 24.7,
-      "ho": 28.4
+    "nr_pedidos": {
+      "receita_aprovada": 0.97,
+      "nr_pedidos": 1.0,
+      "qt_material": 1.0,
+      "vlr_venda_desconto": 0.98,
+      "ticket": -0.58,
+      "itens_por_pedido": 0.37,
+      "tx_desc": 0.6
     },
-    "receita_aprovada|B2. Taxa defasada 7d": {
-      "wf": 24.9,
+    "qt_material": {
+      "receita_aprovada": 0.96,
+      "nr_pedidos": 1.0,
+      "qt_material": 1.0,
+      "vlr_venda_desconto": 0.98,
+      "ticket": -0.59,
+      "itens_por_pedido": 0.44,
+      "tx_desc": 0.62
+    },
+    "vlr_venda_desconto": {
+      "receita_aprovada": 0.95,
+      "nr_pedidos": 0.98,
+      "qt_material": 0.98,
+      "vlr_venda_desconto": 1.0,
+      "ticket": -0.55,
+      "itens_por_pedido": 0.46,
+      "tx_desc": 0.7
+    },
+    "ticket": {
+      "receita_aprovada": -0.45,
+      "nr_pedidos": -0.58,
+      "qt_material": -0.59,
+      "vlr_venda_desconto": -0.55,
+      "ticket": 1.0,
+      "itens_por_pedido": -0.5,
+      "tx_desc": -0.65
+    },
+    "itens_por_pedido": {
+      "receita_aprovada": 0.3,
+      "nr_pedidos": 0.37,
+      "qt_material": 0.44,
+      "vlr_venda_desconto": 0.46,
+      "ticket": -0.5,
+      "itens_por_pedido": 1.0,
+      "tx_desc": 0.66
+    },
+    "tx_desc": {
+      "receita_aprovada": 0.55,
+      "nr_pedidos": 0.6,
+      "qt_material": 0.62,
+      "vlr_venda_desconto": 0.7,
+      "ticket": -0.65,
+      "itens_por_pedido": 0.66,
+      "tx_desc": 1.0
+    }
+  },
+  "ajuste": {
+    "Receita aprovada|Ridge|padrão": {
+      "parametros": "-",
+      "wf": 23.6,
+      "ho": 29.6
+    },
+    "Receita aprovada|Ridge|ajustada": {
+      "parametros": "{'alpha': 300.0}",
+      "wf": 22.9,
+      "ho": 27.6
+    },
+    "Receita aprovada|LightGBM|padrão": {
+      "parametros": "-",
+      "wf": 27.5,
+      "ho": 30.4
+    },
+    "Receita aprovada|LightGBM|ajustada": {
+      "parametros": "{'num_leaves': 3, 'learning_rate': 0.02, 'n_estimators': 1000, 'min_child_samples': 3}",
+      "wf": 28.5,
+      "ho": 27.3
+    },
+    "Receita aprovada|XGBoost|padrão": {
+      "parametros": "-",
+      "wf": 26.3,
+      "ho": 25.9
+    },
+    "Receita aprovada|XGBoost|ajustada": {
+      "parametros": "{'max_depth': 1, 'learning_rate': 0.2, 'n_estimators': 300, 'min_child_weight': 5}",
+      "wf": 25.9,
       "ho": 29.2
     },
+    "Nº de pedidos|Ridge|padrão": {
+      "parametros": "-",
+      "wf": 27.2,
+      "ho": 27.3
+    },
+    "Nº de pedidos|Ridge|ajustada": {
+      "parametros": "{'alpha': 300.0}",
+      "wf": 26.5,
+      "ho": 26.8
+    },
+    "Nº de pedidos|LightGBM|padrão": {
+      "parametros": "-",
+      "wf": 27.9,
+      "ho": 28.9
+    },
+    "Nº de pedidos|LightGBM|ajustada": {
+      "parametros": "{'num_leaves': 15, 'learning_rate': 0.05, 'n_estimators': 1000, 'min_child_samples': 5}",
+      "wf": 27.2,
+      "ho": 30.6
+    },
+    "Nº de pedidos|XGBoost|padrão": {
+      "parametros": "-",
+      "wf": 28.1,
+      "ho": 24.1
+    },
+    "Nº de pedidos|XGBoost|ajustada": {
+      "parametros": "{'max_depth': 1, 'learning_rate': 0.03, 'n_estimators': 100, 'min_child_weight': 3}",
+      "wf": 26.8,
+      "ho": 28.9
+    }
+  },
+  "convergencia": {
+    "melhor_n_arvores_validacao": 69,
+    "erro_treino_final": 0.1018,
+    "erro_val_min": 0.295,
+    "erro_val_final": 0.3756
+  },
+  "sensibilidade": {
+    "receita_aprovada|A. Sem informação de desconto": {
+      "wf": 24.1,
+      "ho": 29.9
+    },
+    "receita_aprovada|B1. Taxa do dia (circular, otimista)": {
+      "wf": 25.1,
+      "ho": 29.3
+    },
+    "receita_aprovada|B2. Taxa defasada 7d": {
+      "wf": 25.2,
+      "ho": 29.6
+    },
     "receita_aprovada|B3. Média 7d defasada": {
-      "wf": 24.8,
-      "ho": 26.9
+      "wf": 24.2,
+      "ho": 26.8
     },
     "receita_aprovada|B4. Taxa do dia com ruído de ~20%": {
-      "wf": 24.7,
-      "ho": 27.1
+      "wf": 24.4,
+      "ho": 26.4
     },
     "nr_pedidos|A. Sem informação de desconto": {
-      "wf": 27.3,
-      "ho": 27.5
+      "wf": 27.0,
+      "ho": 27.4
     },
     "nr_pedidos|B1. Taxa do dia (circular, otimista)": {
-      "wf": 24.8,
-      "ho": 24.2
+      "wf": 24.5,
+      "ho": 24.0
     },
     "nr_pedidos|B2. Taxa defasada 7d": {
       "wf": 27.4,
-      "ho": 28.6
+      "ho": 27.2
     },
     "nr_pedidos|B3. Média 7d defasada": {
-      "wf": 28.3,
-      "ho": 26.0
+      "wf": 27.6,
+      "ho": 24.1
     },
     "nr_pedidos|B4. Taxa do dia com ruído de ~20%": {
-      "wf": 26.7,
-      "ho": 22.4
+      "wf": 26.9,
+      "ho": 22.0
     }
   },
   "sens_tratamento_neg": {
     "Receita aprovada|Manter (líquida)": {
-      "WAPE walk-forward (%)": 24.2,
-      "WAPE holdout (%)": 30.1,
+      "WAPE walk-forward (%)": 24.1,
+      "WAPE holdout (%)": 29.9,
       "nível médio diário vs. manter (%)": 0.0
     },
     "Receita aprovada|Descartar linhas ≤ 0": {
-      "WAPE walk-forward (%)": 23.6,
-      "WAPE holdout (%)": 29.7,
+      "WAPE walk-forward (%)": 23.3,
+      "WAPE holdout (%)": 29.2,
       "nível médio diário vs. manter (%)": 4.3
     },
     "Receita aprovada|Somar |receita|": {
-      "WAPE walk-forward (%)": 23.3,
-      "WAPE holdout (%)": 29.3,
+      "WAPE walk-forward (%)": 23.1,
+      "WAPE holdout (%)": 29.2,
       "nível médio diário vs. manter (%)": 8.6
     },
     "Nº de pedidos|Manter (líquida)": {
-      "WAPE walk-forward (%)": 27.3,
-      "WAPE holdout (%)": 27.5,
+      "WAPE walk-forward (%)": 27.0,
+      "WAPE holdout (%)": 27.4,
       "nível médio diário vs. manter (%)": 0.0
     },
     "Nº de pedidos|Descartar linhas ≤ 0": {
-      "WAPE walk-forward (%)": 27.3,
-      "WAPE holdout (%)": 27.2,
+      "WAPE walk-forward (%)": 27.2,
+      "WAPE holdout (%)": 27.5,
       "nível médio diário vs. manter (%)": -4.1
     },
     "Nº de pedidos|Somar |receita|": {
-      "WAPE walk-forward (%)": 27.3,
-      "WAPE holdout (%)": 27.5,
+      "WAPE walk-forward (%)": 27.0,
+      "WAPE holdout (%)": 27.4,
       "nível médio diário vs. manter (%)": 0.0
     }
   },
   "importancia_perm": {
     "A": {
-      "mesmo_dow_media": 0.0048,
-      "pre_maes": 0.0046,
-      "t": 0.0046,
-      "dow": 0.0039,
-      "media_7d": 0.0011,
-      "pos_pagamento": 0.0003,
-      "cyber_monday": 0.0,
-      "natal_ano_novo": 0.0
+      "dia_da_semana": 0.0069,
+      "pre_maes": 0.0054,
+      "t": 0.0018,
+      "pos_pagamento": 0.0008,
+      "pre_namorados": 0.0,
+      "natal_ano_novo": 0.0,
+      "carnaval": 0.0,
+      "beauty_week": 0.0
     },
     "B": {
-      "dia_mes": 0.0079,
-      "pre_maes": 0.0075,
-      "lag_14": 0.0024,
-      "dow": 0.0022,
-      "tx_desc": 0.0002,
-      "carnaval": 0.0,
-      "pre_namorados": 0.0,
+      "pre_maes": 0.0065,
+      "dia_mes": 0.0023,
+      "pos_pagamento": 0.0003,
+      "bf_dia": 0.0,
+      "beauty_week": 0.0,
+      "pre_natal": 0.0,
+      "natal_ano_novo": 0.0,
       "cyber_monday": 0.0
     }
   },
   "importancia_coef": {
     "A": {
-      "bf_janela": 0.18,
+      "beauty_week": 0.178,
       "pre_maes": 0.107,
-      "media_14d": 0.083,
-      "carnaval": -0.075,
-      "feriado": -0.074,
-      "fim_semana": -0.068,
-      "bf_dia": 0.067,
-      "mesmo_dow_media": -0.062
+      "bf_janela": 0.078,
+      "carnaval": -0.077,
+      "lag_14": 0.072,
+      "feriado": -0.071,
+      "media_14d": 0.06,
+      "bf_dia": 0.059
     },
     "B": {
-      "tx_desc": 0.164,
-      "bf_janela": 0.141,
-      "pre_maes": 0.127,
-      "pre_natal": 0.089,
-      "media_14d": 0.079,
-      "fim_semana": -0.064,
-      "mesmo_dow_media": -0.06,
-      "bf_dia": 0.06
+      "tx_desc": 0.176,
+      "pre_maes": 0.126,
+      "beauty_week": 0.095,
+      "bf_janela": 0.086,
+      "pre_natal": 0.085,
+      "media_14d": 0.065,
+      "t": 0.063,
+      "feriado": -0.057
     }
   },
   "importancia_perm_todas_A": {
-    "mesmo_dow_media": 0.0048,
-    "pre_maes": 0.0046,
-    "t": 0.0046,
-    "dow": 0.0039,
-    "media_7d": 0.0011,
-    "pos_pagamento": 0.0003,
-    "cyber_monday": 0.0,
+    "dia_da_semana": 0.0069,
+    "pre_maes": 0.0054,
+    "t": 0.0018,
+    "pos_pagamento": 0.0008,
+    "pre_namorados": 0.0,
     "natal_ano_novo": 0.0,
     "carnaval": 0.0,
+    "beauty_week": 0.0,
+    "cyber_monday": 0.0,
     "pre_natal": 0.0,
     "bf_janela": 0.0,
     "bf_dia": 0.0,
-    "pre_namorados": 0.0,
     "fim_mes": -0.0002,
-    "fim_semana": -0.0006,
-    "feriado": -0.0055,
-    "lag_7": -0.0067,
-    "lag_14": -0.01,
-    "dia_mes": -0.0108,
-    "media_14d": -0.0114
+    "mesmo_dow_media": -0.002,
+    "feriado": -0.0065,
+    "media_14d": -0.0069,
+    "dia_mes": -0.0073,
+    "lag_7": -0.0087,
+    "media_7d": -0.0103,
+    "lag_14": -0.0103
   },
   "coef_todas_A": {
-    "bf_janela": 0.18,
+    "beauty_week": 0.178,
     "pre_maes": 0.107,
-    "media_14d": 0.083,
-    "carnaval": -0.075,
-    "feriado": -0.074,
-    "fim_semana": -0.068,
-    "bf_dia": 0.067,
-    "mesmo_dow_media": -0.062,
-    "lag_14": 0.062,
-    "pre_natal": 0.044,
+    "bf_janela": 0.078,
+    "carnaval": -0.077,
+    "lag_14": 0.072,
+    "feriado": -0.071,
+    "media_14d": 0.06,
+    "bf_dia": 0.059,
+    "dow_dom": -0.055,
+    "dia_mes": -0.046,
+    "mesmo_dow_media": -0.045,
+    "pre_natal": 0.045,
     "cyber_monday": 0.04,
-    "dia_mes": -0.037,
-    "t": 0.031,
-    "media_7d": 0.03,
-    "pos_pagamento": 0.028,
-    "lag_7": 0.02,
-    "dow": 0.008,
-    "fim_mes": -0.006,
-    "natal_ano_novo": 0.001,
+    "t": 0.036,
+    "dow_sex": 0.034,
+    "media_7d": 0.034,
+    "dow_ter": 0.029,
+    "fim_semana": -0.027,
+    "lag_7": 0.024,
+    "dow_sab": 0.02,
+    "dow_qua": 0.016,
+    "dow_qui": 0.009,
+    "pos_pagamento": 0.008,
+    "fim_mes": -0.004,
+    "natal_ano_novo": -0.001,
     "pre_namorados": 0.0
   },
   "resumo": {
     "receita_aprovada|A. Sem plano promocional": {
-      "modelo": "Média Ridge+LGBM",
-      "WAPE walk-forward (%)": 24.2,
-      "WAPE holdout (%)": 30.1,
+      "modelo": "Ridge",
+      "WAPE walk-forward (%)": 23.6,
+      "WAPE holdout (%)": 29.6,
       "WAPE holdout naive (%)": 35.1,
       "WAPE walk-forward naive (%)": 34.2
     },
     "receita_aprovada|B. Com plano promocional (teto)": {
       "modelo": "Ridge",
-      "WAPE walk-forward (%)": 23.4,
-      "WAPE holdout (%)": 31.2,
+      "WAPE walk-forward (%)": 22.4,
+      "WAPE holdout (%)": 30.5,
       "WAPE holdout naive (%)": 35.1,
       "WAPE walk-forward naive (%)": 34.2
     },
     "nr_pedidos|A. Sem plano promocional": {
       "modelo": "Média Ridge+LGBM",
-      "WAPE walk-forward (%)": 27.3,
-      "WAPE holdout (%)": 27.5,
+      "WAPE walk-forward (%)": 27.0,
+      "WAPE holdout (%)": 27.4,
       "WAPE holdout naive (%)": 29.7,
       "WAPE walk-forward naive (%)": 38.3
     },
     "nr_pedidos|B. Com plano promocional (teto)": {
-      "modelo": "Média Ridge+LGBM",
-      "WAPE walk-forward (%)": 24.8,
-      "WAPE holdout (%)": 24.2,
+      "modelo": "Ridge",
+      "WAPE walk-forward (%)": 23.7,
+      "WAPE holdout (%)": 24.1,
       "WAPE holdout naive (%)": 29.7,
       "WAPE walk-forward naive (%)": 38.3
     }
@@ -201,25 +340,25 @@
         "Viés holdout (%)": -2.3
       },
       "Ridge": {
-        "WAPE walk-forward (%)": 25.1,
-        "WAPE holdout (%)": 30.0,
-        "MAPE holdout (%)": 32.4,
-        "MAE holdout": 474223.8,
-        "Viés holdout (%)": 6.5
+        "WAPE walk-forward (%)": 23.6,
+        "WAPE holdout (%)": 29.6,
+        "MAPE holdout (%)": 31.8,
+        "MAE holdout": 467938.4,
+        "Viés holdout (%)": 7.0
       },
       "LightGBM": {
-        "WAPE walk-forward (%)": 26.5,
-        "WAPE holdout (%)": 30.7,
-        "MAPE holdout (%)": 33.4,
-        "MAE holdout": 485493.0,
-        "Viés holdout (%)": 7.6
+        "WAPE walk-forward (%)": 27.5,
+        "WAPE holdout (%)": 30.4,
+        "MAPE holdout (%)": 34.1,
+        "MAE holdout": 481271.2,
+        "Viés holdout (%)": 10.2
       },
       "Média Ridge+LGBM": {
-        "WAPE walk-forward (%)": 24.2,
-        "WAPE holdout (%)": 30.1,
-        "MAPE holdout (%)": 32.7,
-        "MAE holdout": 477001.6,
-        "Viés holdout (%)": 7.1
+        "WAPE walk-forward (%)": 24.1,
+        "WAPE holdout (%)": 29.9,
+        "MAPE holdout (%)": 32.8,
+        "MAE holdout": 473267.3,
+        "Viés holdout (%)": 8.6
       }
     },
     "receita_aprovada|B. Com plano promocional (teto)": {
@@ -231,25 +370,25 @@
         "Viés holdout (%)": -2.3
       },
       "Ridge": {
-        "WAPE walk-forward (%)": 23.4,
-        "WAPE holdout (%)": 31.2,
-        "MAPE holdout (%)": 30.8,
-        "MAE holdout": 493155.9,
-        "Viés holdout (%)": 3.0
+        "WAPE walk-forward (%)": 22.4,
+        "WAPE holdout (%)": 30.5,
+        "MAPE holdout (%)": 30.2,
+        "MAE holdout": 483107.5,
+        "Viés holdout (%)": 3.4
       },
       "LightGBM": {
-        "WAPE walk-forward (%)": 27.4,
-        "WAPE holdout (%)": 27.0,
-        "MAPE holdout (%)": 26.2,
-        "MAE holdout": 427024.5,
-        "Viés holdout (%)": -4.0
+        "WAPE walk-forward (%)": 29.2,
+        "WAPE holdout (%)": 29.2,
+        "MAPE holdout (%)": 28.7,
+        "MAE holdout": 461790.9,
+        "Viés holdout (%)": -1.4
       },
       "Média Ridge+LGBM": {
-        "WAPE walk-forward (%)": 24.7,
-        "WAPE holdout (%)": 28.4,
-        "MAPE holdout (%)": 27.9,
-        "MAE holdout": 450109.7,
-        "Viés holdout (%)": -0.5
+        "WAPE walk-forward (%)": 25.1,
+        "WAPE holdout (%)": 29.3,
+        "MAPE holdout (%)": 28.9,
+        "MAE holdout": 463835.6,
+        "Viés holdout (%)": 1.0
       }
     },
     "nr_pedidos|A. Sem plano promocional": {
@@ -261,25 +400,25 @@
         "Viés holdout (%)": -9.0
       },
       "Ridge": {
-        "WAPE walk-forward (%)": 28.6,
-        "WAPE holdout (%)": 27.7,
-        "MAPE holdout (%)": 33.3,
-        "MAE holdout": 4721.1,
-        "Viés holdout (%)": 10.4
+        "WAPE walk-forward (%)": 27.2,
+        "WAPE holdout (%)": 27.3,
+        "MAPE holdout (%)": 32.4,
+        "MAE holdout": 4665.1,
+        "Viés holdout (%)": 11.6
       },
       "LightGBM": {
-        "WAPE walk-forward (%)": 28.0,
-        "WAPE holdout (%)": 27.8,
-        "MAPE holdout (%)": 32.7,
-        "MAE holdout": 4745.2,
-        "Viés holdout (%)": 10.8
+        "WAPE walk-forward (%)": 27.9,
+        "WAPE holdout (%)": 28.9,
+        "MAPE holdout (%)": 34.3,
+        "MAE holdout": 4924.0,
+        "Viés holdout (%)": 11.6
       },
       "Média Ridge+LGBM": {
-        "WAPE walk-forward (%)": 27.3,
-        "WAPE holdout (%)": 27.5,
-        "MAPE holdout (%)": 32.8,
-        "MAE holdout": 4693.1,
-        "Viés holdout (%)": 10.6
+        "WAPE walk-forward (%)": 27.0,
+        "WAPE holdout (%)": 27.4,
+        "MAPE holdout (%)": 32.7,
+        "MAE holdout": 4672.8,
+        "Viés holdout (%)": 11.6
       }
     },
     "nr_pedidos|B. Com plano promocional (teto)": {
@@ -291,25 +430,25 @@
         "Viés holdout (%)": -9.0
       },
       "Ridge": {
-        "WAPE walk-forward (%)": 25.0,
-        "WAPE holdout (%)": 24.9,
-        "MAPE holdout (%)": 27.0,
-        "MAE holdout": 4242.3,
-        "Viés holdout (%)": 8.4
+        "WAPE walk-forward (%)": 23.7,
+        "WAPE holdout (%)": 24.1,
+        "MAPE holdout (%)": 26.2,
+        "MAE holdout": 4111.3,
+        "Viés holdout (%)": 9.0
       },
       "LightGBM": {
-        "WAPE walk-forward (%)": 26.2,
-        "WAPE holdout (%)": 26.2,
-        "MAPE holdout (%)": 27.3,
-        "MAE holdout": 4468.9,
-        "Viés holdout (%)": 0.0
+        "WAPE walk-forward (%)": 26.4,
+        "WAPE holdout (%)": 26.8,
+        "MAPE holdout (%)": 27.2,
+        "MAE holdout": 4568.3,
+        "Viés holdout (%)": -4.8
       },
       "Média Ridge+LGBM": {
-        "WAPE walk-forward (%)": 24.8,
-        "WAPE holdout (%)": 24.2,
-        "MAPE holdout (%)": 26.2,
-        "MAE holdout": 4137.7,
-        "Viés holdout (%)": 4.2
+        "WAPE walk-forward (%)": 24.5,
+        "WAPE holdout (%)": 24.0,
+        "MAPE holdout (%)": 25.4,
+        "MAE holdout": 4094.1,
+        "Viés holdout (%)": 2.1
       }
     }
   }

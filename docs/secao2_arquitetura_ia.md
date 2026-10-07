@@ -19,6 +19,20 @@ por características qualitativas e quantitativas. O time não programa e a ferr
 5. **Alternativa imediata sem código:** enquanto o MVP não existe, usar ferramentas já homologadas (planilhas, BI, o
    processo de teste A/B atual) para rotular manualmente 100–200 banners. Esses rótulos serão o gabarito do modelo.
 
+## 1b. Caminho enquanto a ferramenta não está homologada
+
+O bloqueio não precisa parar o time. Conectar uma ferramenta de IA corporativa por API costuma depender da área de Tecnologia, que autoriza e opera
+essas conexões. Proposta em duas etapas:
+
+1. **Prototipação sem conectar APIs corporativas:** o time (com apoio de Dados) roda a análise em **Python num ambiente de notebook (por exemplo, Google Colab)**,
+   com modelos abertos de imagem (embeddings CLIP/SigLIP, OpenCV para cor/contraste, detecção de rostos e texto). Usa-se apenas **imagens públicas e institucionais** dos banners,
+   sem dados de clientes. O objetivo é provar o valor (o score se relaciona com desempenho?) e documentar as características úteis.
+2. **Produtização na ferramenta homologada:** em paralelo, abrir a demanda com a área de Tecnologia para executar o mesmo pipeline sobre a ferramenta de IA homologada
+   (por exemplo, o assistente corporativo via API), reaproveitando os critérios e o código do protótipo. O protótipo é descartável por definição: serve para reduzir o risco e a incerteza antes de pedir a conexão.
+
+**Cuidados:** deixar claro que o notebook é uma prova de conceito e não um sistema em produção (sem agendamento, sem manutenção, sem acesso a dados sensíveis), e combinar com
+Tecnologia/Segurança que tipo de dado pode ou não sair do ambiente corporativo.
+
 ## 2. Implementação técnica viável (sem restrição de ferramenta)
 
 **Princípio:** representar cada imagem por *embeddings* (vetores que resumem o conteúdo visual) e por métricas visuais

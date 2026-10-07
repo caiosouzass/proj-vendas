@@ -15,6 +15,14 @@
   "receita_media_dia": 2026073.6643514684,
   "bf_receita": 12707522.618894326,
   "bf_multiplo": 7.5,
+  "nov_pct_receita": 26.3,
+  "nov_pct_pedidos": 33.7,
+  "bf_dia_pct_receita": 2.6,
+  "bf_janela_pct_receita": 8.7,
+  "media_dia_nov_vs_resto": [
+    4.3,
+    1.7
+  ],
   "preco_item_geral": 49.545257495583954,
   "ticket_geral": 75.19057227160619,
   "tx_desc_geral": 43.64754712810411,
@@ -71,6 +79,16 @@
   "corr_receita_desconto": 0.55,
   "corr_pedidos_desconto": 0.6,
   "corr_ticket_desconto": -0.65,
+  "spearman": {
+    "receita": 0.53,
+    "pedidos": 0.64,
+    "ticket": -0.63
+  },
+  "pearson_sem_novembro": {
+    "receita": 0.26,
+    "pedidos": 0.41,
+    "ticket": -0.46
+  },
   "dow_indice": {
     "Seg": 0.94,
     "Ter": 1.02,
