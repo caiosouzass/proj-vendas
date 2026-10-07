@@ -11,7 +11,6 @@ Análise exploratória, modelo de previsão de vendas diárias e proposta de arq
 │   ├── 03_comparativo_modelos.ipynb    # Seção 1 – comparação com ETS, SARIMAX e Prophet
 │   └── 04_secao2_arquitetura_ia.ipynb  # Seção 2 – inovação e arquitetura de IA (texto)
 ├── src/                                # Código reutilizável (dados, features, modelagem, estilo dos gráficos)
-├── presentation/                       # Apresentação executiva (.pptx) e script que a gera
 ├── reports/                            # Figuras e números-chave gerados pelos notebooks
 └── requirements.txt
 ```
@@ -30,7 +29,6 @@ Análise exploratória, modelo de previsão de vendas diárias e proposta de arq
    jupyter nbconvert --to notebook --execute --inplace 01_analise_exploratoria.ipynb
    jupyter nbconvert --to notebook --execute --inplace 02_modelagem_preditiva.ipynb
    jupyter nbconvert --to notebook --execute --inplace 03_comparativo_modelos.ipynb   # ~10 min (reajusta os modelos clássicos a cada dia de teste)
-   cd .. && python presentation/build_deck.py
    ```
 
 ## Principais conclusões

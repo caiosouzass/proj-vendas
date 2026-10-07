@@ -3,6 +3,9 @@ data/
 *.csv
 *.pdf
 
+# Apresentação (não versionada)
+presentation/
+
 # Ambiente
 .venv/
 venv/
