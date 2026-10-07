@@ -206,6 +206,56 @@
       "nível médio diário vs. manter (%)": 0.0
     }
   },
+  "teste_sem_t": {
+    "Receita aprovada|Ridge|com t": {
+      "wf": 23.6,
+      "ho": 29.6
+    },
+    "Receita aprovada|LightGBM|com t": {
+      "wf": 27.5,
+      "ho": 30.4
+    },
+    "Receita aprovada|Média Ridge+LGBM|com t": {
+      "wf": 24.1,
+      "ho": 29.9
+    },
+    "Receita aprovada|Ridge|sem t": {
+      "wf": 21.9,
+      "ho": 27.4
+    },
+    "Receita aprovada|LightGBM|sem t": {
+      "wf": 29.5,
+      "ho": 31.4
+    },
+    "Receita aprovada|Média Ridge+LGBM|sem t": {
+      "wf": 24.6,
+      "ho": 28.9
+    },
+    "Nº de pedidos|Ridge|com t": {
+      "wf": 27.2,
+      "ho": 27.3
+    },
+    "Nº de pedidos|LightGBM|com t": {
+      "wf": 27.9,
+      "ho": 28.9
+    },
+    "Nº de pedidos|Média Ridge+LGBM|com t": {
+      "wf": 27.0,
+      "ho": 27.4
+    },
+    "Nº de pedidos|Ridge|sem t": {
+      "wf": 25.8,
+      "ho": 26.9
+    },
+    "Nº de pedidos|LightGBM|sem t": {
+      "wf": 27.3,
+      "ho": 25.6
+    },
+    "Nº de pedidos|Média Ridge+LGBM|sem t": {
+      "wf": 26.1,
+      "ho": 25.2
+    }
+  },
   "importancia_perm": {
     "A": {
       "dia_da_semana": 0.0069,
