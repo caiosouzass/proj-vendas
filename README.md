@@ -8,9 +8,9 @@ Análise exploratória, modelo de previsão de vendas diárias e proposta de arq
 ├── notebooks/
 │   ├── 01_analise_exploratoria.ipynb   # Seção 1 – insights de negócio
 │   ├── 02_modelagem_preditiva.ipynb    # Seção 1 – indicadores, features, modelos, ajuste e importância
-│   └── 03_comparativo_modelos.ipynb    # Seção 1 – comparação com ETS, SARIMAX e Prophet
+│   ├── 03_comparativo_modelos.ipynb    # Seção 1 – comparação com ETS, SARIMAX e Prophet
+│   └── 04_secao2_arquitetura_ia.ipynb  # Seção 2 – inovação e arquitetura de IA (texto)
 ├── src/                                # Código reutilizável (dados, features, modelagem, estilo dos gráficos)
-├── docs/secao2_arquitetura_ia.md       # Seção 2 – inovação e arquitetura de IA
 ├── presentation/                       # Apresentação executiva (.pptx) e script que a gera
 ├── reports/                            # Figuras e números-chave gerados pelos notebooks
 └── requirements.txt
